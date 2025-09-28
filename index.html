@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Login - GreeMind</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -20,7 +21,10 @@
             <h2>Login</h2>
             <form>
                 <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="password" required>
+                <div class="password-container">
+                    <input type="password" id="password" placeholder="Contraseña" required>
+                    <i class='bx bx-low-vision toggle-password' id="togglePassword"></i>
+                </div>
                 <button type="submit">Login</button>
                 <div class="links">
                     <a href="#" onclick="openModal('forgotModal')">¿Olvidaste tu contraseña?</a>
@@ -57,5 +61,6 @@
             </div>
         </div>
     <script src="js/modals.js"></script>
+    <script src="js/password.js"></script>
 </body>
 </html>

@@ -184,3 +184,28 @@ form button:hover {
 .modal-content input::placeholder {
   color: #888;
 }
+
+.password-container {
+  position: relative;
+  width: 100%;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 40px; /* espacio para el icono */
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 22px;
+  color: #888;
+  user-select: none;
+}
+
+.toggle-password:hover {
+  color: #4caf50;
+}
