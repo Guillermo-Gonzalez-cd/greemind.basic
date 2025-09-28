@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - GreeMind</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="login-container">
+        <!-- Panel izquierdo -->
+        <div class="left-panel">
+            <h1>welcome</h1>
+            <h2>GreeMind</h2>
+            <p>Porque cada grano cuenta<br>gestiona tu café con inteligencia</p>
+        </div>
+
+        <!-- Panel derecho -->
+        <div class="right-panel">
+            <h2>Login</h2>
+            <form>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="password" required>
+                <button type="submit">Login</button>
+                <div class="links">
+                    <a href="#" onclick="openModal('forgotModal')">¿Olvidaste tu contraseña?</a>
+                    <a href="#" onclick="openModal('recoverModal')">Recuperar cuenta</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+            <!-- Recuperar Contraseña -->
+        <div class="modal" id="forgotModal">
+            <div class="modal-content">
+                <span class="close" data-close="forgotModal">&times;</span>
+                <h3>Recuperar Contraseña</h3>
+                <p>Ingresa tu correo y te enviaremos un código de verificación.</p>
+                <form action="https://formsubmit.co/your@email.com" method="POST">
+                    <input type="email" name="email" required>
+                    <button type="submit">Enviar</button>
+                </form>
+
+            </div>
+        </div>
+
+        <!-- Modal: Recuperar Cuenta -->
+        <div class="modal" id="recoverModal">
+            <div class="modal-content">
+                <span class="close" data-close="recoverModal">&times;</span>
+                <h3>Recuperar Cuenta</h3>
+                <p>Verifica tu identidad para recuperar tu cuenta.</p>
+                <form action="https://formsubmit.co/your@email.com" method="POST">
+                    <input type="email" name="email" required>
+                    <button type="submit">Verificar</button>
+                </form>
+            </div>
+        </div>
+    <script src="js/modals.js"></script>
+</body>
+</html>
