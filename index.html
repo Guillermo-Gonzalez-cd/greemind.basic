@@ -19,19 +19,20 @@
         <!-- Panel derecho -->
         <div class="right-panel">
             <h2>Login</h2>
-            <form>
-                <input type="email" placeholder="Email" required>
+            <!-- Esto te lleva al dashboard -->
+            <form id="loginForm">
+                <input type="email" id="email" placeholder="Email" required>
                 <div class="password-container">
                     <input type="password" id="password" placeholder="Contraseña" required>
                     <i class='bx bx-low-vision toggle-password' id="togglePassword"></i>
                 </div>
                 <button type="submit">Login</button>
-                <div class="links">
-                    <a href="#" onclick="openModal('forgotModal')">¿Olvidaste tu contraseña?</a>
-                    <a href="#" onclick="openModal('recoverModal')">Recuperar cuenta</a>
-                </div>
-
             </form>
+
+            <div class="links">
+                <a href="#" onclick="openModal('forgotModal')">¿Olvidaste tu contraseña?</a>
+                <a href="#" onclick="openModal('recoverModal')">Recuperar cuenta</a>
+            </div>
         </div>
     </div>
             <!-- Modal: Recuperar Contraseña -->
@@ -62,5 +63,6 @@
         </div>
     <script src="js/modals.js"></script>
     <script src="js/password.js"></script>
+    <script src="js/login.js"></script>
 </body>
 </html>
