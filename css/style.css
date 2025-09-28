@@ -143,7 +143,7 @@ form button:hover {
   border-radius: 10px;
   width: 90%;
   max-width: 400px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 15px rgba(36, 19, 19, 0.3);
   position: relative;
 }
 
@@ -174,4 +174,13 @@ form button:hover {
   top: 10px;
   font-size: 20px;
   cursor: pointer;
+}
+/* Reparando los inputs del modal */
+.modal-content input {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.modal-content input::placeholder {
+  color: #888;
 }
