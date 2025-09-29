@@ -1,16 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Dashboard - GreenMind</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
-    <!-- Panel superior -->
-    <div class="top-container-background">
-        <!-- El fondo del panel superior -->
-        <div>
-            <h1>Hola mundo</h1>
-        </div>
+  <div class="sidebar">
+    <div class="logo">
+      <img src="img/logo.png" alt="Logo GreenMind">
+      <h2>GreeMind</h2>
     </div>
+    <ul>
+      <li class="active"><img src="img/icons/dashboard.png" alt=""> Dashboard</li>
+      <li><img src="img/icons/cultivo.png" alt=""> Cultivo</li>
+      <li><img src="img/icons/finca.png" alt=""> Finca</li>
+      <li><img src="img/icons/reporte.png" alt=""> Reporte</li>
+      <li><img src="img/icons/transporte.png" alt=""> Transporte</li>
+    </ul>
+  </div>
+
+  <div class="main">
+    <h1>Dashboard</h1>
+
+    <!-- PREVIEW del mapa -->
+    <div class="map-preview" onclick="openFullMap()">
+      <iframe src="maps.html" title="Mapa" class="map-iframe"></iframe>
+      <div class="overlay">Click para abrir mapa completo</div>
+    </div>
+
+    <!-- TABLA -->
+    <div class="table-container">
+      <button class="btn">+ Agregar finca</button>
+      <table>
+        <thead>
+          <tr>
+            <th>Parcela</th>
+            <th>Área (ha)</th>
+            <th>Tipo de cultivo</th>
+            <th>Estado</th>
+            <th>Última cosecha</th>
+            <th>Observaciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Parcela 1</td>
+            <td>2.5</td>
+            <td>Café</td>
+            <td>Activo</td>
+            <td>2024-11-10</td>
+            <td>En buenas condiciones</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </body>
 </html>
