@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestión de Cultivos</title>
+  <link rel="stylesheet" href="css/cultivo.css" />
+</head>
+<body>
+  <h1>Registro de Cultivos</h1>
+
+  <form id="cultivoForm">
+    <label for="nombre">Nombre del cultivo</label>
+    <input type="text" id="nombre" required />
+
+    <label for="variedad">Variedad</label>
+    <input type="text" id="variedad" required />
+
+    <label for="fecha">Fecha de siembra</label>
+    <input type="date" id="fecha" required />
+
+    <button type="submit">Agregar cultivo</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Variedad</th>
+        <th>Fecha de siembra</th>
+      </tr>
+    </thead>
+    <tbody id="cultivosTableBody"></tbody>
+  </table>
+
+  <script src="js/cultivo.js"></script>
+</body>
+</html>
