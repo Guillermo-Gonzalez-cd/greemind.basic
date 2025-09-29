@@ -7,14 +7,15 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
-  <div class="sidebar">
+  <!-- Sidebar izquierdo -->
+  <div class="sidebar"> 
     <div class="logo">
       <img src="img/logo.png" alt="Logo GreenMind" />
       <h2>GreenMind</h2>
     </div>
     <ul>
-      <li class="active">
-        <a href="index.html">
+      <li>
+        <a href="dashboard.html">
           <img src="img/icons/dashboard.png" alt="" /> Dashboard
         </a>
       </li>
@@ -39,8 +40,16 @@
         </a>
       </li>
     </ul>
+
+    <!-- Icono de ajustes (abajo a la izquierda) -->
+        <div class="sidebar-settings">
+          <a href="ajustes.html">
+            <img src="img/icons/ajustes.png" alt="" /> Ajustes
+          </a>
+      </div>
   </div>
 
+  <!-- Topbar del usuario -->
   <div class="main">
     <div class="topbar">
       <div class="topbar-icons">

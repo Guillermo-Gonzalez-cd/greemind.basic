@@ -3,36 +3,95 @@
 <head>
   <meta charset="UTF-8" />
   <title>Gestión de Fincas - GreenMind</title>
+  <link rel="stylesheet" href="css/dashboard.css" />
   <link rel="stylesheet" href="css/finca.css" />
 </head>
 <body>
-  <h1>Registro de Fincas</h1>
-  
-  <form id="fincaForm">
-    <label for="nombre">Nombre de la finca</label>
-    <input type="text" id="nombre" required />
-    
-    <label for="area">Área (ha)</label>
-    <input type="number" id="area" min="0" step="0.01" required />
-    
-    <label for="cultivo">Tipo de cultivo</label>
-    <input type="text" id="cultivo" required />
-    
-    <button type="submit">Agregar finca</button>
-  </form>
-  
-  <table>
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Área (ha)</th>
-        <th>Tipo de cultivo</th>
-      </tr>
-    </thead>
-    <tbody id="fincasTableBody">
-      <!-- Aquí se listan las fincas -->
-    </tbody>
-  </table>
+
+  <!-- Sidebar izquierdo -->
+  <div class="sidebar"> 
+    <div class="logo">
+      <img src="img/logo.png" alt="Logo GreenMind" />
+      <h2>GreenMind</h2>
+    </div>
+    <ul>
+      <li>
+        <a href="dashboard.html">
+          <img src="img/icons/dashboard.png" alt="" /> Dashboard
+        </a>
+      </li>
+      <li>
+        <a href="cultivo.html">
+          <img src="img/icons/cultivo.png" alt="" /> Cultivo
+        </a>
+      </li>
+      <li>
+        <a href="finca.html">
+          <img src="img/icons/finca.png" alt="" /> Finca
+        </a>
+      </li>
+      <li>
+        <a href="reporte.html">
+          <img src="img/icons/reporte.png" alt="" /> Reporte
+        </a>
+      </li>
+      <li>
+        <a href="transporte.html">
+          <img src="img/icons/transporte.png" alt="" /> Transporte
+        </a>
+      </li>
+    </ul>
+
+    <!-- Icono de ajustes (abajo a la izquierda) -->
+        <div class="sidebar-settings">
+          <a href="ajustes.html">
+            <img src="img/icons/ajustes.png" alt="" /> Ajustes
+          </a>
+      </div>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="main">
+
+    <!-- Topbar -->
+    <div class="topbar">
+      <div class="topbar-icons">
+        <img src="img/icons/user.png" alt="Usuario" />
+        <img src="img/icons/arrow.png" alt="Salir" />
+      </div>
+    </div>
+
+    <!-- Título -->
+    <h1>Registro de Fincas</h1>
+
+    <!-- Formulario de finca -->
+    <form id="fincaForm" class="form-finca">
+      <input type="text" id="nombre" placeholder="Nombre de la finca" required />
+
+      <input type="number" id="area" placeholder="Área (ha)" min="0" step="0.01" required />
+
+      <input type="text" id="cultivo" placeholder="Tipo de cultivo" required />
+
+      <button type="submit">Agregar finca</button>
+    </form>
+
+    <!-- Tabla de fincas -->
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Área (ha)</th>
+            <th>Tipo de cultivo</th>
+          </tr>
+        </thead>
+        <tbody id="fincasTableBody">
+          <!-- Aquí se listan las fincas -->
+        </tbody>
+      </table>
+    </div>
+
+  </div>
 
   <script src="js/finca.js"></script>
 </body>

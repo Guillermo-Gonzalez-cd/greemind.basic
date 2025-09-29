@@ -50,7 +50,7 @@ body {
 /* Main content */
 .main {
   flex: 1;
-  padding: 15px;
+  padding: 20px;
 }
 .main h1 {
   font-size: 20px;
@@ -144,4 +144,41 @@ td {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+.sidebar {
+  width: 200px;
+  background: #2f3e46;
+  color: white;
+  min-height: 100vh;
+  padding: 15px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Esto empuja ajustes abajo */
+}
+
+.sidebar-settings {
+  padding: 12px 16px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin-top: auto;
+}
+
+.sidebar-settings a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.sidebar-settings a img {
+  width: 40%; /* Tamaño consistente con los demás íconos */
+  height: 40%;
+  opacity: 0.85;
+}
+
+.sidebar-settings a:hover {
+  background: #354f52;
+  padding: 10px;
+  border-radius: 5px;
 }

@@ -1,12 +1,20 @@
 body {
+  display: flex;
+  margin: 0;
   font-family: Arial, sans-serif;
-  margin: 20px;
   background: #f4f6f8;
   color: #2f3e46;
 }
-h1 {
-  margin-bottom: 15px;
+
+.main-content {
+  flex: 1;
+  padding: 20px;
 }
+
+h1 {
+  margin-bottom: 20px;
+}
+
 form {
   background: white;
   padding: 15px;
@@ -15,11 +23,13 @@ form {
   max-width: 400px;
   margin-bottom: 20px;
 }
+
 label {
   display: block;
   margin-top: 10px;
   font-weight: bold;
 }
+
 input[type="text"], input[type="number"] {
   width: 100%;
   padding: 7px;
@@ -27,6 +37,7 @@ input[type="text"], input[type="number"] {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
 button {
   margin-top: 15px;
   background: #52796f;
@@ -37,9 +48,11 @@ button {
   cursor: pointer;
   font-weight: bold;
 }
+
 button:hover {
   background: #354f52;
 }
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -48,11 +61,13 @@ table {
   overflow: hidden;
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
+
 th, td {
   padding: 10px;
   border-bottom: 1px solid #ddd;
   text-align: left;
 }
+
 th {
   background: #52796f;
   color: white;

@@ -3,34 +3,89 @@
 <head>
   <meta charset="UTF-8">
   <title>Registro de Transporte</title>
-  <link rel="stylesheet" href="css/transporte.css" />
+  <link rel="stylesheet" href="css/dashboard.css" /> <!-- Sidebar -->
+  <link rel="stylesheet" href="css/transporte.css" /> <!-- Estilo específico -->
 </head>
 <body>
-  <h1>Gastos de Transporte</h1>
 
-  <form id="transporteForm">
-    <label for="origen">Origen</label>
-    <input type="text" id="origen" required />
+  <!-- Sidebar izquierdo -->
+  <div class="sidebar"> 
+    <div class="logo">
+      <img src="img/logo.png" alt="Logo GreenMind" />
+      <h2>GreenMind</h2>
+    </div>
+    <ul>
+      <li>
+        <a href="dashboard.html">
+          <img src="img/icons/dashboard.png" alt="" /> Dashboard
+        </a>
+      </li>
+      <li>
+        <a href="cultivo.html">
+          <img src="img/icons/cultivo.png" alt="" /> Cultivo
+        </a>
+      </li>
+      <li>
+        <a href="finca.html">
+          <img src="img/icons/finca.png" alt="" /> Finca
+        </a>
+      </li>
+      <li>
+        <a href="reporte.html">
+          <img src="img/icons/reporte.png" alt="" /> Reporte
+        </a>
+      </li>
+      <li>
+        <a href="transporte.html">
+          <img src="img/icons/transporte.png" alt="" /> Transporte
+        </a>
+      </li>
+    </ul>
 
-    <label for="destino">Destino</label>
-    <input type="text" id="destino" required />
+    <!-- Icono de ajustes (abajo a la izquierda) -->
+        <div class="sidebar-settings">
+          <a href="ajustes.html">
+            <img src="img/icons/ajustes.png" alt="" /> Ajustes
+          </a>
+      </div>
+  </div>
 
-    <label for="costo">Costo (USD)</label>
-    <input type="number" id="costo" required />
+  <!-- Topbar del usuario -->
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar-icons">
+        <img src="img/icons/user.png" alt="Usuario" />
+        <img src="img/icons/arrow.png" alt="Salir" />
+      </div>
+    </div>
+    
+  <div class="main-content">
+    <h1>Gastos de Transporte</h1>
 
-    <button type="submit">Registrar</button>
-  </form>
+    <form id="transporteForm">
+      <label for="origen">Origen</label>
+      <input type="text" id="origen" required />
 
-  <table>
-    <thead>
-      <tr>
-        <th>Origen</th>
-        <th>Destino</th>
-        <th>Costo</th>
-      </tr>
-    </thead>
-    <tbody id="transporteTableBody"></tbody>
-  </table>
+      <label for="destino">Destino</label>
+      <input type="text" id="destino" required />
+
+      <label for="costo">Costo (USD)</label>
+      <input type="number" id="costo" required />
+
+      <button type="submit">Registrar</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Origen</th>
+          <th>Destino</th>
+          <th>Costo</th>
+        </tr>
+      </thead>
+      <tbody id="transporteTableBody"></tbody>
+    </table>
+  </div>
 
   <script src="js/transporte.js"></script>
 </body>
