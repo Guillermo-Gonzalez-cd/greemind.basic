@@ -3,139 +3,66 @@ body {
   font-family: Arial, sans-serif;
   display: flex;
   background: #f4f6f8;
-  font-size: 14px; /* reduce tamaño global */
+  font-size: 14px;
 }
 
-/* -------- SIDEBAR -------- */
+/* Sidebar */
 .sidebar {
-  width: 200px; /* menos ancho */
+  width: 200px;
   background: #2f3e46;
   color: white;
   min-height: 100vh;
   padding: 15px 0;
 }
-
 .sidebar .logo {
   text-align: center;
   margin-bottom: 50px;
 }
-
 .sidebar .logo img {
-  width: 70px; /* más pequeño */
+  width: 70px;
 }
-
 .sidebar .logo h2 {
   font-size: 16px;
   margin: 8px 0 0;
 }
-
 .sidebar ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
 .sidebar ul li {
-  padding: 10px; /* más compacto */
+  padding: 10px;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: 13px;
 }
-
 .sidebar ul li img {
-  width: 18px; /* íconos más chicos */
+  width: 18px;
   height: 18px;
 }
-
-.sidebar ul li.active, .sidebar ul li:hover {
+.sidebar ul li.active,
+.sidebar ul li:hover {
   background: #354f52;
 }
 
-/* -------- MAIN -------- */
+/* Main content */
 .main {
   flex: 1;
   padding: 15px;
 }
-
 .main h1 {
   font-size: 20px;
   margin-bottom: 15px;
 }
-
-/* -------- MAPA PREVIEW -------- */
-.map-preview {
-  position: relative;
-  width: 100%;
-  height: 220px; /* más pequeño */
-  border: 1px solid #ccc;
-  margin-bottom: 15px;
-  overflow: hidden;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.map-iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  pointer-events: none;
-}
-
-.map-preview .overlay {
-  position: absolute;
-  bottom: 8px;
-  right: 8px;
-  background: rgba(47, 62, 70, 0.8);
-  color: white;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-}
-
-/* -------- TABLA -------- */
-.table-container {
-  background: white;
-  padding: 12px;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-}
-
-.table-container .btn {
-  background: #52796f;
-  color: white;
-  padding: 6px 10px; /* botón más chico */
-  margin-bottom: 8px;
-  border: none;
-  border-radius: 4px;
-  font-size: 13px;
-  cursor: pointer;
-}
-
-.table-container .btn:hover {
-  background: #354f52;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-  font-size: 13px; /* letras más pequeñas */
-}
-
-th, td {
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
-}
-/* -- Los iconos de usuario -- */
+/* Topbar icons */
 .topbar {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   margin-bottom: 15px;
 }
-
 .topbar-icons img {
   width: 35px;
   height: 35px;
@@ -144,29 +71,50 @@ th, td {
   opacity: 0.85;
   transition: transform 0.2s, opacity 0.2s;
 }
-
 .topbar-icons img:hover {
   transform: scale(1.1);
   opacity: 1;
 }
-/* -- Icono de ajuste -- */
-.sidebar-settings {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
+
+/* Mapa */
+#dashboard-map {
+  width: 100%;
+  height: 300px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 15px;
 }
 
-.sidebar-settings img {
-  width: 50px;
-  height: 50px;
+/* Tabla */
+.table-container {
+  background: white;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+.table-container .btn {
+  background: #52796f;
+  color: white;
+  padding: 6px 10px;
+  margin-bottom: 8px;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
   cursor: pointer;
-  opacity: 0.85;
-  transition: transform 0.2s, opacity 0.2s;
 }
-
-.sidebar-settings img:hover {
-  transform: rotate(90deg);
-  opacity: 1;
+.table-container .btn:hover {
+  background: #354f52;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13px;
+}
+th,
+td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
 }
 .sidebar ul li a {
   color: inherit;
