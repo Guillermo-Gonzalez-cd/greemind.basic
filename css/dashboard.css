@@ -3,12 +3,12 @@ body {
   font-family: Arial, sans-serif;
   display: flex;
   background: #f4f6f8;
-  font-size: 14px; /* 👈 reduce tamaño global */
+  font-size: 14px; /* reduce tamaño global */
 }
 
 /* -------- SIDEBAR -------- */
 .sidebar {
-  width: 200px; /* 👈 menos ancho */
+  width: 200px; /* menos ancho */
   background: #2f3e46;
   color: white;
   min-height: 100vh;
@@ -17,11 +17,11 @@ body {
 
 .sidebar .logo {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
 .sidebar .logo img {
-  width: 40px; /* 👈 más pequeño */
+  width: 70px; /* más pequeño */
 }
 
 .sidebar .logo h2 {
@@ -36,7 +36,7 @@ body {
 }
 
 .sidebar ul li {
-  padding: 10px; /* 👈 más compacto */
+  padding: 10px; /* más compacto */
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -45,7 +45,7 @@ body {
 }
 
 .sidebar ul li img {
-  width: 18px; /* 👈 íconos más chicos */
+  width: 18px; /* íconos más chicos */
   height: 18px;
 }
 
@@ -68,7 +68,7 @@ body {
 .map-preview {
   position: relative;
   width: 100%;
-  height: 220px; /* 👈 más pequeño */
+  height: 220px; /* más pequeño */
   border: 1px solid #ccc;
   margin-bottom: 15px;
   overflow: hidden;
@@ -105,7 +105,7 @@ body {
 .table-container .btn {
   background: #52796f;
   color: white;
-  padding: 6px 10px; /* 👈 botón más chico */
+  padding: 6px 10px; /* botón más chico */
   margin-bottom: 8px;
   border: none;
   border-radius: 4px;
@@ -121,10 +121,57 @@ table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  font-size: 13px; /* 👈 letras más pequeñas */
+  font-size: 13px; /* letras más pequeñas */
 }
 
 th, td {
   padding: 8px;
   border-bottom: 1px solid #ddd;
+}
+/* -- Los iconos de usuario -- */
+.topbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.topbar-icons img {
+  width: 35px;
+  height: 35px;
+  margin-left: 12px;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.topbar-icons img:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+/* -- Icono de ajuste -- */
+.sidebar-settings {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+.sidebar-settings img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.sidebar-settings img:hover {
+  transform: rotate(90deg);
+  opacity: 1;
+}
+.sidebar ul li a {
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
