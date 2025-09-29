@@ -1,0 +1,62 @@
+
+body {
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+.sidebar {
+  width: 320px;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  overflow-y: auto;
+  background: #f7f7f7;
+}
+
+.sidebar h2 {
+  margin-top: 0;
+  font-weight: 500;
+}
+
+.sidebar input, .sidebar button {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.sidebar button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.sidebar button:hover {
+  background-color: #45a049;
+}
+
+#map {
+  flex: 1;
+  height: 100%;
+}
+
+.finca-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  padding: 5px;
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.finca-item button {
+  margin-left: 5px;
+  padding: 3px 6px;
+  font-size: 12px;
+}
