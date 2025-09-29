@@ -56,6 +56,7 @@ body {
   font-size: 20px;
   margin-bottom: 15px;
 }
+
 /* Topbar icons */
 .topbar {
   display: flex;
@@ -76,10 +77,44 @@ body {
   opacity: 1;
 }
 
+/* Formulario finca */
+.form-finca {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.form-finca input {
+  flex: 1 1 150px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.form-finca input[readonly] {
+  background-color: #eee;
+}
+.form-finca small {
+  flex-basis: 100%;
+  color: #555;
+}
+.form-finca button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  flex-basis: 100%;
+}
+.form-finca button:hover {
+  background-color: #45a049;
+}
+
 /* Mapa */
 #dashboard-map {
   width: 100%;
-  height: 300px;
+  height: 350px;
   border: 1px solid #ccc;
   border-radius: 8px;
   margin-bottom: 15px;
@@ -91,19 +126,6 @@ body {
   padding: 12px;
   border-radius: 8px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-}
-.table-container .btn {
-  background: #52796f;
-  color: white;
-  padding: 6px 10px;
-  margin-bottom: 8px;
-  border: none;
-  border-radius: 4px;
-  font-size: 13px;
-  cursor: pointer;
-}
-.table-container .btn:hover {
-  background: #354f52;
 }
 table {
   width: 100%;

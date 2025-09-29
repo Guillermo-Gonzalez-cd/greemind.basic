@@ -51,31 +51,36 @@
 
     <h1>Dashboard</h1>
 
-    <!-- Mapa integrado -->
+    <!-- Formulario para agregar finca -->
+    <form id="form-finca" class="form-finca">
+      <input type="text" id="nombre" placeholder="Nombre de la finca" required />
+      <input type="text" id="propietario" placeholder="Propietario" required />
+      <input type="text" id="direccion" placeholder="Dirección" required />
+      <input type="number" id="area" placeholder="Área total (ha)" step="0.01" required />
+      <input type="text" id="lat" placeholder="Latitud" readonly required />
+      <input type="text" id="lng" placeholder="Longitud" readonly required />
+      <small>Selecciona un punto en el mapa para obtener la ubicación</small>
+      <button type="submit">Agregar finca</button>
+    </form>
+
+    <!-- Mapa -->
     <div id="dashboard-map"></div>
 
+    <!-- Tabla dinámica -->
     <div class="table-container">
-      <button class="btn">+ Agregar finca</button>
-      <table>
+      <table id="tabla-fincas">
         <thead>
           <tr>
             <th>Parcela</th>
+            <th>Propietario</th>
+            <th>Dirección</th>
             <th>Área (ha)</th>
-            <th>Tipo de cultivo</th>
-            <th>Estado</th>
-            <th>Última cosecha</th>
-            <th>Observaciones</th>
+            <th>Latitud</th>
+            <th>Longitud</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Parcela 1</td>
-            <td>2.5</td>
-            <td>Café</td>
-            <td>Activo</td>
-            <td>2024-11-10</td>
-            <td>En buenas condiciones</td>
-          </tr>
+          <!-- Aquí se agregan filas dinámicamente -->
         </tbody>
       </table>
     </div>
