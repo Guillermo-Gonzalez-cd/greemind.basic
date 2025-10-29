@@ -37,6 +37,7 @@ let map, markers = [], fincas = [];
 
 // Inicializar mapa
 function initMap() {
+    
     map = L.map('map').setView([12.8654, -85.2072], 7);
 
     const satLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {

@@ -1,56 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Registro de Transporte</title>
-  <link rel="stylesheet" href="css/dashboard.css" /> <!-- Sidebar -->
-  <link rel="stylesheet" href="css/transporte.css" /> <!-- Estilo específico -->
+  <link rel="stylesheet" href="css/finca.css" />
+  <link rel="stylesheet" href="css/transporte.css" />
 </head>
 <body>
 
-  <!-- Sidebar izquierdo -->
-  <div class="sidebar"> 
+  <!-- Sidebar -->
+  <div class="sidebar">
     <div class="logo">
       <img src="img/logo.png" alt="Logo GreenMind" />
       <h2>GreenMind</h2>
     </div>
     <ul>
-      <li>
-        <a href="dashboard.html">
-          <img src="img/icons/dashboard.png" alt="" /> Dashboard
-        </a>
-      </li>
-      <li>
-        <a href="cultivo.html">
-          <img src="img/icons/cultivo.png" alt="" /> Cultivo
-        </a>
-      </li>
-      <li>
-        <a href="finca.html">
-          <img src="img/icons/finca.png" alt="" /> Finca
-        </a>
-      </li>
-      <li>
-        <a href="reporte.html">
-          <img src="img/icons/reporte.png" alt="" /> Reporte
-        </a>
-      </li>
-      <li>
-        <a href="transporte.html">
-          <img src="img/icons/transporte.png" alt="" /> Transporte
-        </a>
-      </li>
+      <li><a href="finca.html"><img src="img/icons/dashboard.png" alt="" /> Dashboard</a></li>
+      <li><a href="cultivo.html"><img src="img/icons/cultivo.png" alt="" /> Cultivo</a></li>
+      <li><a href="reporte.html"><img src="img/icons/reporte.png" alt="" /> Reporte</a></li>
+      <li class="active"><a href="transporte.html"><img src="img/icons/transporte.png" alt="" /> Transporte</a></li>
     </ul>
-
-    <!-- Icono de ajustes (abajo a la izquierda) -->
-        <div class="sidebar-settings">
-          <a href="ajustes.html">
-            <img src="img/icons/ajustes.png" alt="" /> Ajustes
-          </a>
-      </div>
+    <div class="sidebar-settings">
+      <a href="ajustes.html"><img src="img/icons/ajustes.png" alt="" /> Ajustes</a>
+    </div>
   </div>
 
-  <!-- Topbar del usuario -->
+  <!-- Contenido principal -->
   <div class="main">
     <div class="topbar">
       <div class="topbar-icons">
@@ -58,33 +34,59 @@
         <img src="img/icons/arrow.png" alt="Salir" />
       </div>
     </div>
-    
-  <div class="main-content">
-    <h1>Gastos de Transporte</h1>
 
-    <form id="transporteForm">
-      <label for="origen">Origen</label>
-      <input type="text" id="origen" required />
+    <div class="main-content">
+      <h1>Registro Detallado de Transporte</h1>
 
-      <label for="destino">Destino</label>
-      <input type="text" id="destino" required />
+      <form id="transporteForm">
+        <label for="origen">Origen</label>
+        <input type="text" id="origen" required />
 
-      <label for="costo">Costo (USD)</label>
-      <input type="number" id="costo" required />
+        <label for="destino">Destino</label>
+        <input type="text" id="destino" required />
 
-      <button type="submit">Registrar</button>
-    </form>
+        <label for="distancia">Distancia (km)</label>
+        <input type="number" id="distancia" min="0" step="0.1" required />
 
-    <table>
-      <thead>
-        <tr>
-          <th>Origen</th>
-          <th>Destino</th>
-          <th>Costo</th>
-        </tr>
-      </thead>
-      <tbody id="transporteTableBody"></tbody>
-    </table>
+        <label for="carga">Carga transportada (quintales)</label>
+        <input type="number" id="carga" min="0" step="0.01" required />
+
+        <label for="vehiculo">Vehículo (tipo o placa)</label>
+        <input type="text" id="vehiculo" required />
+
+        <label for="conductor">Conductor</label>
+        <input type="text" id="conductor" required />
+
+        <label for="costo">Costo total (USD)</label>
+        <input type="number" id="costo" min="0" step="0.01" required />
+
+        <label for="fecha">Fecha del viaje</label>
+        <input type="date" id="fecha" required />
+
+        <label for="observaciones">Observaciones</label>
+        <textarea id="observaciones" rows="3" placeholder="Notas del viaje..."></textarea>
+
+        <button type="submit">Registrar viaje</button>
+      </form>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Origen</th>
+            <th>Destino</th>
+            <th>Distancia (km)</th>
+            <th>Carga (qq)</th>
+            <th>Vehículo</th>
+            <th>Conductor</th>
+            <th>Costo (USD)</th>
+            <th>Costo/km</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="transporteTableBody"></tbody>
+      </table>
+    </div>
   </div>
 
   <script src="js/transporte.js"></script>

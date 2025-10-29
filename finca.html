@@ -2,12 +2,11 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Gestión de Fincas - GreenMind</title>
-  <link rel="stylesheet" href="css/dashboard.css" />
+  <title>Finca - GreenMind</title>
   <link rel="stylesheet" href="css/finca.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
-
   <!-- Sidebar izquierdo -->
   <div class="sidebar"> 
     <div class="logo">
@@ -15,45 +14,19 @@
       <h2>GreenMind</h2>
     </div>
     <ul>
-      <li>
-        <a href="dashboard.html">
-          <img src="img/icons/dashboard.png" alt="" /> Dashboard
-        </a>
-      </li>
-      <li>
-        <a href="cultivo.html">
-          <img src="img/icons/cultivo.png" alt="" /> Cultivo
-        </a>
-      </li>
-      <li>
-        <a href="finca.html">
-          <img src="img/icons/finca.png" alt="" /> Finca
-        </a>
-      </li>
-      <li>
-        <a href="reporte.html">
-          <img src="img/icons/reporte.png" alt="" /> Reporte
-        </a>
-      </li>
-      <li>
-        <a href="transporte.html">
-          <img src="img/icons/transporte.png" alt="" /> Transporte
-        </a>
-      </li>
+      <li><a href="finca.html" class="active"><img src="img/icons/dashboard.png" alt="" /> Finca</a></li>
+      <li><a href="cultivo.html"><img src="img/icons/cultivo.png" alt="" /> Cultivo</a></li>
+      <li><a href="reporte.html"><img src="img/icons/reporte.png" alt="" /> Reporte</a></li>
+      <li><a href="transporte.html"><img src="img/icons/transporte.png" alt="" /> Transporte</a></li>
     </ul>
 
-    <!-- Icono de ajustes (abajo a la izquierda) -->
-        <div class="sidebar-settings">
-          <a href="ajustes.html">
-            <img src="img/icons/ajustes.png" alt="" /> Ajustes
-          </a>
-      </div>
+    <div class="sidebar-settings">
+      <a href="ajustes.html"><img src="img/icons/ajustes.png" alt="" /> Ajustes</a>
+    </div>
   </div>
 
   <!-- Contenido principal -->
   <div class="main">
-
-    <!-- Topbar -->
     <div class="topbar">
       <div class="topbar-icons">
         <img src="img/icons/user.png" alt="Usuario" />
@@ -61,38 +34,44 @@
       </div>
     </div>
 
-    <!-- Título -->
-    <h1>Registro de Fincas</h1>
+    <h1>Gestión de Fincas</h1>
 
-    <!-- Formulario de finca -->
-    <form id="fincaForm" class="form-finca">
+    <!-- Formulario -->
+    <form id="form-finca" class="form-finca">
+      <input type="hidden" id="editIndex">
       <input type="text" id="nombre" placeholder="Nombre de la finca" required />
-
-      <input type="number" id="area" placeholder="Área (ha)" min="0" step="0.01" required />
-
-      <input type="text" id="cultivo" placeholder="Tipo de cultivo" required />
-
-      <button type="submit">Agregar finca</button>
+      <input type="text" id="propietario" placeholder="Propietario" required />
+      <input type="text" id="direccion" placeholder="Dirección" required />
+      <input type="number" id="area" placeholder="Área total (ha)" step="0.01" required />
+      <input type="text" id="lat" placeholder="Latitud" readonly required />
+      <input type="text" id="lng" placeholder="Longitud" readonly required />
+      <small>Selecciona un punto en el mapa para obtener la ubicación</small>
+      <button type="submit">Guardar Finca</button>
     </form>
 
-    <!-- Tabla de fincas -->
+    <!-- Mapa -->
+    <div id="dashboard-map"></div>
+
+    <!-- Tabla -->
     <div class="table-container">
-      <table>
+      <table id="tabla-fincas">
         <thead>
           <tr>
-            <th>Nombre</th>
+            <th>Parcela</th>
+            <th>Propietario</th>
+            <th>Dirección</th>
             <th>Área (ha)</th>
-            <th>Tipo de cultivo</th>
+            <th>Latitud</th>
+            <th>Longitud</th>
+            <th>Acciones</th>
           </tr>
         </thead>
-        <tbody id="fincasTableBody">
-          <!-- Aquí se listan las fincas -->
-        </tbody>
+        <tbody></tbody>
       </table>
     </div>
-
   </div>
 
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="js/finca.js"></script>
 </body>
 </html>

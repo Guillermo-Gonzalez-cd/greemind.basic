@@ -1,59 +1,197 @@
+/*ESTILOS GENERALES*/
 body {
-  font-family: Arial, sans-serif;
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  display: flex;
   background: #f4f6f8;
-  color: #2f3e46;
-  margin: 0; /* Quitamos el margin para que encaje con el layout principal */
+  font-size: 14px;
+  color: #333;
 }
 
-.main {
-  flex: 1;
-  padding: 20px;
-}
-
-h1 {
-  margin-bottom: 15px;
-}
-
-/* Formulario */
-form {
-  background: white;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-  max-width: 400px;
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-input[type="text"], input[type="number"] {
-  width: 100%;
-  padding: 7px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-button {
-  margin-top: 15px;
-  background: #52796f;
+/*SIDEBAR*/
+.sidebar {
+  width: 220px;
+  background: #2f3e46;
   color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
+  min-height: 100vh;
+  padding: 15px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
 }
 
-button:hover {
+.sidebar .logo {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.sidebar .logo img {
+  width: 70px;
+}
+
+.sidebar .logo h2 {
+  font-size: 16px;
+  margin: 8px 0 0;
+  letter-spacing: 0.5px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.sidebar ul li img {
+  width: 18px;
+  height: 18px;
+}
+
+.sidebar ul li:hover,
+.sidebar ul li a.active {
   background: #354f52;
 }
 
-/* Tabla */
+.sidebar ul li a {
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Ajustes al final del sidebar */
+.sidebar-settings {
+  padding: 12px 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin-top: auto;
+}
+
+.sidebar-settings a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.sidebar-settings a img {
+  width: 18px;
+  height: 18px;
+  opacity: 0.85;
+}
+
+.sidebar-settings a:hover {
+  background: #354f52;
+  border-radius: 5px;
+}
+
+/*MAIN*/
+.main {
+  flex: 1;
+  padding: 25px;
+}
+
+.main h1 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #2f3e46;
+}
+
+/*TOPBAR*/
+.topbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.topbar-icons img {
+  width: 32px;
+  height: 32px;
+  margin-left: 12px;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.topbar-icons img:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+/*FORMULARIO*/
+.form-finca {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.form-finca input {
+  flex: 1 1 150px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.2s;
+}
+
+.form-finca input:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+.form-finca input[readonly] {
+  background-color: #eee;
+}
+
+.form-finca small {
+  flex-basis: 100%;
+  color: #666;
+  font-size: 12px;
+}
+
+.form-finca button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  flex-basis: 100%;
+  transition: background 0.3s ease;
+}
+
+.form-finca button:hover {
+  background-color: #43a047;
+}
+
+/*MAPA*/
+#dashboard-map {
+  width: 100%;
+  height: 380px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/*TABLA*/
 .table-container {
   background: white;
   padding: 15px;
@@ -64,17 +202,21 @@ button:hover {
 table {
   width: 100%;
   border-collapse: collapse;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-th, td {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
   text-align: left;
+  font-size: 13px;
 }
 
 th {
-  background: #52796f;
+  background-color: #2f3e46;
   color: white;
+  padding: 10px;
+}
+
+td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover td {
+  background-color: #f9f9f9;
 }
