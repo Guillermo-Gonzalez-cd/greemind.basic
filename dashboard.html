@@ -2,76 +2,73 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Finca - GreenMind</title>
-  <link rel="stylesheet" href="css/dashboard.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreeMind Fincas - Opción B</title>
+  <link rel="stylesheet" href="/css/dashboard.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
 <body>
-  <!-- Sidebar izquierdo -->
-  <div class="sidebar"> 
-    <div class="logo">
-      <img src="img/logo.png" alt="Logo GreenMind" />
-      <h2>GreenMind</h2>
+  <!-- SIDEBAR -->
+  <div class="sidebar" id="sidebar">
+    <div class="logo-section">
+      <img src="/img/logo.png" class="logo" />
+      <span class="logo-text">GreeMind</span>
     </div>
-    <ul>
-      <li><a href="dashboard.html" class="active"><img src="img/icons/dashboard.png" alt="" /> Finca</a></li>
-      <li><a href="cultivo.html"><img src="img/icons/cultivo.png" alt="" /> Cultivo</a></li>
-      <li><a href="reporte.html"><img src="img/icons/reporte.png" alt="" /> Reporte</a></li>
-      <li><a href="transporte.html"><img src="img/icons/transporte.png" alt="" /> Transporte</a></li>
+
+    <ul class="menu">
+      <li class="active">🌱 <span>Fincas</span></li>
+      <li onclick="navigate('crop.html')">🌾 <span>Cultivos</span></li>
+      <li onclick="navigate('report.html')">📊 <span>Reportes</span></li>
+      <li onclick="navigate('clima.html')">☁️ <span>Clima</span></li>
     </ul>
 
-    <div class="sidebar-settings">
-      <a href="ajustes.html"><img src="img/icons/ajustes.png" alt="" /> Ajustes</a>
-    </div>
+    <ul class="menu bottom">
+      <li onclick="navigate('settings.html')">⚙️ <span>Configuración</span></li>
+      <li>🔓 <span>Salir</span></li>
+    </ul>
   </div>
 
-  <!-- Contenido principal -->
+  <!-- MAIN -->
   <div class="main">
     <div class="topbar">
-      <div class="topbar-icons">
-        <img src="img/icons/user.png" alt="Usuario" />
-        <img src="img/icons/arrow.png" alt="Salir" />
+      <h1>Fincas</h1>
+      <img class="profile" src="https://cdn-icons-png.flaticon.com/512/6997/6997662.png" />
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <h4>Parcelas activas</h4>
+        <h2 id="totalFincas">0</h2>
+      </div>
+      <div class="card">
+        <h4>Total hectáreas</h4>
+        <h2 id="totalHectareas">0 ha</h2>
+      </div>
+      <div class="card">
+        <h4>Producción mensual</h4>
+        <h2 id="produccionMensual">0 kg</h2>
       </div>
     </div>
 
-    <h1>Gestión de Fincas</h1>
+    <div class="grid">
+      <div class="map-box">
+        <div id="map" style="height:300px;"></div>
+      </div>
 
-    <!-- Formulario -->
-    <form id="form-finca" class="form-finca">
-      <input type="hidden" id="editIndex">
-      <input type="text" id="nombre" placeholder="Nombre de la finca" required />
-      <input type="text" id="propietario" placeholder="Propietario" required />
-      <input type="text" id="direccion" placeholder="Dirección" required />
-      <input type="number" id="area" placeholder="Área total (ha)" step="0.01" required />
-      <input type="text" id="lat" placeholder="Latitud" readonly required />
-      <input type="text" id="lng" placeholder="Longitud" readonly required />
-      <small>Selecciona un punto en el mapa para obtener la ubicación</small>
-      <button type="submit">Guardar Finca</button>
-    </form>
-
-    <!-- Mapa -->
-    <div id="dashboard-map"></div>
-
-    <!-- Tabla -->
-    <div class="table-container">
-      <table id="tabla-fincas">
-        <thead>
-          <tr>
-            <th>Parcela</th>
-            <th>Propietario</th>
-            <th>Dirección</th>
-            <th>Área (ha)</th>
-            <th>Latitud</th>
-            <th>Longitud</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+      <div class="weather-box" id="weatherBox">
+        <h3>Clima</h3>
+        <p class="temp" id="temp">--°</p>
+        <p id="wind">Viento: -- km/h</p>
+        <p id="hum">Humedad: --%</p>
+      </div>
     </div>
+
+    <h3>Producción por parcela</h3>
+    <canvas id="prodChart"></canvas>
   </div>
 
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script src="js/dashboard.js"></script>
+  <script src="/js/dashboard.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>

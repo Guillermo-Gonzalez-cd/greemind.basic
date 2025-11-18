@@ -6,14 +6,19 @@ let fincas = [];
 document.addEventListener('DOMContentLoaded', () => {
   initMap();
   cargarFincas();
-  document.getElementById('form-finca').addEventListener('submit', guardarFinca);
+
+  // Solo si existe el formulario de fincas
+  const form = document.getElementById('form-finca');
+  if (form) {
+    form.addEventListener('submit', guardarFinca);
+  }
 });
 
 // Inicializar el mapa centrado en Nicaragua
 function initMap() {
   const nicaraguaBounds = L.latLngBounds([10.7, -87.7], [15.0, -82.9]);
 
-  map = L.map('dashboard-map', {
+  map = L.map('map', {
     center: [12.8654, -85.2072],
     zoom: 7,
     minZoom: 6,
@@ -31,8 +36,14 @@ function initMap() {
       alert("Solo puedes marcar dentro de Nicaragua");
       return;
     }
-    document.getElementById('lat').value = e.latlng.lat.toFixed(6);
-    document.getElementById('lng').value = e.latlng.lng.toFixed(6);
+
+    // Si existe el formulario, actualiza los campos lat/lng
+    const latInput = document.getElementById('lat');
+    const lngInput = document.getElementById('lng');
+    if (latInput && lngInput) {
+      latInput.value = e.latlng.lat.toFixed(6);
+      lngInput.value = e.latlng.lng.toFixed(6);
+    }
   });
 }
 
@@ -49,7 +60,7 @@ function guardarFinca(e) {
     lng: parseFloat(document.getElementById('lng').value)
   };
 
-  if (!finca.nombre || !finca.propietario || !finca.direccion || isNaN(finca.area) || isNaN(finca.lat)) {
+  if (!finca.nombre || !finca.propietario || !finca.direccion || isNaN(finca.area) || isNaN(finca.lat) || isNaN(finca.lng)) {
     alert("Por favor completa todos los campos.");
     return;
   }
@@ -57,9 +68,9 @@ function guardarFinca(e) {
   const editIndex = document.getElementById('editIndex').value;
 
   if (editIndex === "") {
-    fincas.push(finca); // Crear
+    fincas.push(finca); // Crear nueva finca
   } else {
-    fincas[editIndex] = finca; // Actualizar
+    fincas[editIndex] = finca; // Actualizar finca existente
     document.getElementById('editIndex').value = "";
   }
 
@@ -75,34 +86,57 @@ function cargarFincas() {
   mostrarFincas();
 }
 
-// Mostrar fincas en la tabla
+// Mostrar fincas en la tabla y en el mapa
 function mostrarFincas() {
   const tbody = document.querySelector('#tabla-fincas tbody');
-  tbody.innerHTML = "";
+  if (tbody) tbody.innerHTML = "";
+
+  // Limpiar markers antiguos
   markers.forEach(m => map.removeLayer(m));
   markers = [];
 
-  fincas.forEach((finca, index) => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>${finca.nombre}</td>
-      <td>${finca.propietario}</td>
-      <td>${finca.direccion}</td>
-      <td>${finca.area.toFixed(2)}</td>
-      <td>${finca.lat.toFixed(6)}</td>
-      <td>${finca.lng.toFixed(6)}</td>
-      <td>
-        <button onclick="editarFinca(${index})">✏️</button>
-        <button onclick="eliminarFinca(${index})">🗑️</button>
-      </td>
-    `;
-    tbody.appendChild(tr);
+  let totalHectareas = 0;
 
+  fincas.forEach((finca, index) => {
+    totalHectareas += finca.area;
+
+    // Tabla
+    if (tbody) {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${finca.nombre}</td>
+        <td>${finca.propietario}</td>
+        <td>${finca.direccion}</td>
+        <td>${finca.area.toFixed(2)}</td>
+        <td>${finca.lat.toFixed(6)}</td>
+        <td>${finca.lng.toFixed(6)}</td>
+        <td>
+          <button onclick="editarFinca(${index})">✏️</button>
+          <button onclick="eliminarFinca(${index})">🗑️</button>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    }
+
+    // Marker en el mapa
     const marker = L.marker([finca.lat, finca.lng])
       .addTo(map)
       .bindPopup(`<strong>${finca.nombre}</strong><br>${finca.propietario}<br>${finca.direccion}`);
     markers.push(marker);
   });
+
+  // Actualizar cards
+  const totalFincasCard = document.getElementById('totalFincas');
+  const totalHectareasCard = document.getElementById('totalHectareas');
+  const produccionMensualCard = document.getElementById('produccionMensual');
+
+  if (totalFincasCard) totalFincasCard.textContent = fincas.length;
+  if (totalHectareasCard) totalHectareasCard.textContent = totalHectareas.toFixed(2) + ' ha';
+  if (produccionMensualCard) {
+    // Aquí puedes poner tu lógica real de producción mensual
+    const produccionMensual = totalHectareas * 100; // ejemplo: 100kg por hectárea
+    produccionMensualCard.textContent = produccionMensual.toFixed(0) + ' kg';
+  }
 }
 
 // Editar finca
@@ -128,6 +162,9 @@ function eliminarFinca(index) {
 
 // Limpiar formulario
 function limpiarFormulario() {
-  document.getElementById('form-finca').reset();
-  document.getElementById('editIndex').value = "";
+  const form = document.getElementById('form-finca');
+  if (form) form.reset();
+  const editIndex = document.getElementById('editIndex');
+  if (editIndex) editIndex.value = "";
 }
+
