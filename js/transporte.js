@@ -1,10 +1,10 @@
-const form = document.getElementById("transporteForm");
+const transporteForm = document.getElementById("transporteForm");
 const tableBody = document.getElementById("transporteTableBody");
 
 let transportes = JSON.parse(localStorage.getItem("transportes")) || [];
 let editIndex = null;
 
-function renderTabla() {
+function mostrarTransportes() {
   tableBody.innerHTML = "";
 
   if (transportes.length === 0) {
@@ -14,33 +14,32 @@ function renderTabla() {
 
   transportes.forEach((t, i) => {
     const costoKm = (t.costo / t.distancia).toFixed(2);
-    const fila = `
-      <tr>
-        <td>${t.fecha}</td>
-        <td>${t.origen}</td>
-        <td>${t.destino}</td>
-        <td>${t.distancia}</td>
-        <td>${t.carga}</td>
-        <td>${t.vehiculo}</td>
-        <td>${t.conductor}</td>
-        <td>$${t.costo.toFixed(2)}</td>
-        <td>$${costoKm}</td>
-        <td>
-          <button class="btn-editar" onclick="editarRegistro(${i})">✏️</button>
-          <button class="btn-eliminar" onclick="eliminarRegistro(${i})">🗑️</button>
-        </td>
-      </tr>
+    const fila = document.createElement("tr");
+    fila.innerHTML = `
+      <td>${t.fecha}</td>
+      <td>${t.origen}</td>
+      <td>${t.destino}</td>
+      <td>${t.distancia}</td>
+      <td>${t.carga}</td>
+      <td>${t.vehiculo}</td>
+      <td>${t.conductor}</td>
+      <td>$${t.costo.toFixed(2)}</td>
+      <td>$${costoKm}</td>
+      <td>
+        <button class="btn-editar" onclick="editarTransporte(${i})">✏️</button>
+        <button class="btn-eliminar" onclick="eliminarTransporte(${i})">🗑️</button>
+      </td>
     `;
-    tableBody.insertAdjacentHTML("beforeend", fila);
+    tableBody.appendChild(fila);
   });
 
   localStorage.setItem("transportes", JSON.stringify(transportes));
 }
 
-form.addEventListener("submit", (e) => {
+transporteForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const transporte = {
+  const t = {
     origen: document.getElementById("origen").value.trim(),
     destino: document.getElementById("destino").value.trim(),
     distancia: parseFloat(document.getElementById("distancia").value),
@@ -53,18 +52,18 @@ form.addEventListener("submit", (e) => {
   };
 
   if (editIndex !== null) {
-    transportes[editIndex] = transporte;
+    transportes[editIndex] = t;
     editIndex = null;
-    form.querySelector("button").textContent = "Registrar viaje";
+    transporteForm.querySelector("button").textContent = "Registrar viaje";
   } else {
-    transportes.push(transporte);
+    transportes.push(t);
   }
 
-  form.reset();
-  renderTabla();
+  transporteForm.reset();
+  mostrarTransportes();
 });
 
-function editarRegistro(i) {
+function editarTransporte(i) {
   const t = transportes[i];
   document.getElementById("origen").value = t.origen;
   document.getElementById("destino").value = t.destino;
@@ -77,14 +76,15 @@ function editarRegistro(i) {
   document.getElementById("observaciones").value = t.observaciones;
 
   editIndex = i;
-  form.querySelector("button").textContent = "Actualizar registro";
+  transporteForm.querySelector("button").textContent = "Actualizar registro";
 }
 
-function eliminarRegistro(i) {
+function eliminarTransporte(i) {
   if (confirm("¿Seguro que deseas eliminar este registro?")) {
     transportes.splice(i, 1);
-    renderTabla();
+    mostrarTransportes();
   }
 }
 
-renderTabla();
+// Inicializar tabla
+mostrarTransportes();

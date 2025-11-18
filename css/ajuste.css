@@ -1,0 +1,179 @@
+:root {
+  --bg: #2c473e;
+  --accent: #6A8E4E;
+  --paper: #F5F1E9;
+  --muted: rgba(15,20,16,0.06);
+  --text-dark: #0b2b20;
+  --hover: rgba(106,142,78,0.15);
+}
+
+/* Reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--paper);
+  color: var(--text-dark);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 220px;
+  background: var(--bg);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 18px;
+  box-shadow: 6px 0 18px rgba(15,20,16,0.05);
+  border-right: 1px solid rgba(255,255,255,0.03);
+}
+
+.sidebar.collapsed {
+  width: 72px;
+  padding: 20px 10px;
+}
+
+.sidebar .logo-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebar .logo-text {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.sidebar.collapsed .logo-text {
+  display: none;
+}
+
+/* Main content */
+.main {
+  margin-left: 220px;
+  padding: 20px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.topbar .profile {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+/* Formulario Ajustes */
+form#ajustesForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  margin-bottom: 25px;
+}
+
+form#ajustesForm > div {
+  display: flex;
+  flex-direction: column;
+}
+
+form#ajustesForm label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  color: var(--bg);
+}
+
+form#ajustesForm input[type="text"],
+form#ajustesForm input[type="number"],
+form#ajustesForm input[type="date"],
+form#ajustesForm textarea {
+  padding: 6px 10px;
+  font-size: 1rem;
+  border: 1px solid #a3c293;
+  border-radius: 4px;
+  width: 180px;
+}
+
+form#ajustesForm textarea {
+  resize: vertical;
+}
+
+form#ajustesForm button {
+  padding: 8px 16px;
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form#ajustesForm button:hover {
+  background-color: #5c7f42;
+}
+
+/* Tabla Ajustes */
+table#ajustesTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+table#ajustesTable thead {
+  background-color: var(--accent);
+  color: white;
+}
+
+table#ajustesTable th,
+table#ajustesTable td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--muted);
+  text-align: left;
+}
+
+table#ajustesTable tbody tr:hover {
+  background-color: var(--hover);
+}
+
+table#ajustesTable td.actions {
+  width: 90px;
+  display: flex;
+  gap: 6px;
+}
+
+button.action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 4px;
+}
+
+button.action-btn.edit {
+  color: var(--accent);
+}
+
+button.action-btn.delete {
+  color: #e94e4e;
+}
+

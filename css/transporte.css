@@ -1,87 +1,163 @@
-body {
-  display: flex;
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f6f8;
-  color: #2f3e46;
+:root {
+  --bg: #2c473e;   
+  --accent: #6A8E4E;
+  --paper: #F5F1E9;
+  --muted: rgba(15,20,16,0.06);
+  --text-dark: #0b2b20;
+  --hover: rgba(106, 142, 78, 0.15);
 }
 
-.main-content {
+/* Reset ligero */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--paper);
+  color: var(--text-dark);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Sidebar */
+.sidebar{
+  position: fixed; left:0; top:0; bottom:0;
+  width: 240px;
+  background: linear-gradient(180deg, rgba(44,71,62,0.98) 0%, rgba(44,71,62,0.98) 100%);
+  color: #fff;
+  padding: 22px 18px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  transition: width 280ms ease, padding 280ms ease;
+  z-index: 30;
+  box-shadow: 6px 0 18px rgba(15,20,16,0.05);
+  border-right: 1px solid rgba(255,255,255,0.03);
+}
+.sidebar.collapsed{ width:72px; padding:18px 10px; }
+.sidebar .logo-section{ display:flex; align-items:center; gap:12px; }
+.sidebar .logo-text{ font-weight:700;font-size:18px;color:var(--paper); }
+.sidebar.collapsed .logo-text{ display:none; }
+/* Main content */
+.main {
+  margin-left: 220px;
   flex: 1;
   padding: 20px;
 }
 
-h1 {
+/* Topbar */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
 }
 
-form {
-  background: white;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-  max-width: 400px; /* corregido: antes había un espacio raro */
-  margin-bottom: 20px;
+.topbar .profile {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
 }
 
-label {
-  display: block;
-  margin-top: 10px;
+/* Formulario transporte */
+form#transporteForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-end;
+  background: #fff; /* contraste suave */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(15,17,16,0.04);
+  margin-bottom: 25px;
+}
+
+form#transporteForm > div {
+  display: flex;
+  flex-direction: column;
+}
+
+form#transporteForm label {
   font-weight: bold;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  color: var(--bg);
 }
 
-input[type="text"],
-input[type="number"],
-input[type="date"],
-textarea {
-  width: 100%;
-  padding: 7px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-family: inherit;
-  font-size: 14px;
+form#transporteForm input[type="text"],
+form#transporteForm input[type="number"],
+form#transporteForm input[type="date"],
+form#transporteForm textarea {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 1px solid #a3c293;
+  border-radius: 6px;
+  width: 200px;
   box-sizing: border-box;
 }
 
-textarea {
+form#transporteForm textarea {
   resize: vertical;
 }
 
-button {
-  margin-top: 15px;
-  background: #52796f;
-  color: white;
+form#transporteForm button {
+  padding: 10px 18px;
+  background-color: var(--accent);
   border: none;
-  padding: 10px 15px;
-  border-radius: 4px;
-  cursor: pointer;
+  border-radius: 6px;
+  color: white;
   font-weight: bold;
-  transition: background 0.3s ease;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background: #354f52;
+form#transporteForm button:hover {
+  background-color: #5c7f42;
 }
 
+/* Tabla transporte */
 table {
   width: 100%;
   border-collapse: collapse;
-  background: white;
-  border-radius: 8px;
+  font-size: 0.95rem;
+  background: #fff; /* mismo fondo suave */
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 18px rgba(15,17,16,0.04);
+  margin-top: 15px;
 }
 
-th, td {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
+table thead {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+table th, table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--muted);
   text-align: left;
-  font-size: 14px;
 }
 
-th {
-  background: #52796f;
-  color: white;
-  text-transform: uppercase;
+table tbody tr:hover {
+  background-color: var(--hover);
+}
+
+table tbody td.actions {
+  width: 100px;
+  display: flex;
+  gap: 6px;
+}
+
+button.action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 4px;
+}
+
+button.action-btn.edit {
+  color: var(--accent);
+}
+
+button.action-btn.delete {
+  color: #e94e4e;
 }

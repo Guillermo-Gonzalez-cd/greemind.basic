@@ -1,53 +1,33 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // Recuperar fincas desde localStorage
-  const fincas = JSON.parse(localStorage.getItem("fincas")) || [];
+const reporteForm = document.getElementById('reporteForm');
+const reporteTableBody = document.getElementById('reporteTableBody');
 
-  let costoTotal = 0;
-  let ingresos = 0;
+reporteForm.addEventListener('submit', (e) => {
+  e.preventDefault();
 
-  // Calcular costos e ingresos por finca
-  fincas.forEach(finca => {
-    // Ejemplo de cálculo: puedes ajustar según tu modelo
-    const costo = finca.area * 1000;    // costo por hectárea
-    const ingreso = finca.area * 1500;  // ingreso por hectárea
+  // Limpiar tabla antes de agregar resultados
+  reporteTableBody.innerHTML = '';
 
-    costoTotal += costo;
-    ingresos += ingreso;
+  const fechaInicio = document.getElementById('fechaInicio').value;
+  const fechaFin = document.getElementById('fechaFin').value;
+  const tipoReporte = document.getElementById('tipoReporte').value;
+
+  // Ejemplo de resultados (reemplazar con fetch o API real)
+  const resultadosEjemplo = [
+    { fecha: '2025-11-01', finca: 'Finca A', parcela: 'Parcela 1', tipo: tipoReporte, valor: '100 kg', observaciones: 'Ninguna' },
+    { fecha: '2025-11-02', finca: 'Finca B', parcela: 'Parcela 2', tipo: tipoReporte, valor: '150 kg', observaciones: 'Revisar humedad' },
+  ];
+
+  resultadosEjemplo.forEach(item => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${item.fecha}</td>
+      <td>${item.finca}</td>
+      <td>${item.parcela}</td>
+      <td>${item.tipo}</td>
+      <td>${item.valor}</td>
+      <td>${item.observaciones}</td>
+    `;
+    reporteTableBody.appendChild(row);
   });
-
-  const utilidad = ingresos - costoTotal;
-
-  // Mostrar resultados en el HTML
-  document.getElementById('costoTotal').textContent = costoTotal.toFixed(2);
-  document.getElementById('ingresos').textContent = ingresos.toFixed(2);
-  document.getElementById('utilidad').textContent = utilidad.toFixed(2);
-
-  // Opcional: generar tabla de detalle de fincas
-  const tablaContainer = document.createElement('div');
-  tablaContainer.innerHTML = `
-    <h2>Detalle de Fincas</h2>
-    <table border="1" cellpadding="8" cellspacing="0">
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Área (ha)</th>
-          <th>Propietario</th>
-          <th>Costo ($)</th>
-          <th>Ingreso ($)</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${fincas.map(finca => `
-          <tr>
-            <td>${finca.nombre}</td>
-            <td>${finca.area.toFixed(2)}</td>
-            <td>${finca.propietario}</td>
-            <td>${(finca.area * 1000).toFixed(2)}</td>
-            <td>${(finca.area * 1500).toFixed(2)}</td>
-          </tr>
-        `).join('')}
-      </tbody>
-    </table>
-  `;
-  document.querySelector('.main-content').appendChild(tablaContainer);
 });
+
