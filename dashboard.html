@@ -11,23 +11,25 @@
 <body>
   <!-- SIDEBAR -->
   <div class="sidebar" id="sidebar">
-    <div class="logo-section">
-      <img src="/img/logo.png" class="logo" />
-      <span class="logo-text">GreeMind</span>
-    </div>
-
-    <ul class="menu">
-      <li class="active">🌱 <span>Fincas</span></li>
-      <li onclick="navigate('crop.html')">🌾 <span>Cultivos</span></li>
-      <li onclick="navigate('report.html')">📊 <span>Reportes</span></li>
-      <li onclick="navigate('clima.html')">☁️ <span>Clima</span></li>
-    </ul>
-
-    <ul class="menu bottom">
-      <li onclick="navigate('settings.html')">⚙️ <span>Configuración</span></li>
-      <li>🔓 <span>Salir</span></li>
-    </ul>
+  <div class="logo-section">
+    <img src="/img/logo.png" class="logo" />
+    <span class="logo-text">GreeMind</span>
   </div>
+
+  <ul class="menu">
+    <li class="active">🏠 <span>Fincas</span></li>
+    <li onclick="navigate('cultivo.html')">🌱 <span>Cultivos</span></li>
+    <li onclick="navigate('report.html')">📊 <span>Reportes</span></li>
+    <li onclick="navigate('clima.html')">☁️ <span>Clima</span></li>
+    <li onclick="navigate('transport.html')">🚜 <span>Transporte</span></li>
+  </ul>
+
+  <ul class="menu bottom">
+    <li onclick="navigate('settings.html')">⚙️ <span>Configuración</span></li>
+    <li onclick="navigate('logout.html')">🔓 <span>Salir</span></li>
+  </ul>
+</div>
+
 
   <!-- MAIN -->
   <div class="main">
@@ -70,5 +72,13 @@
 
   <script src="/js/dashboard.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+  function navigate(page) {
+    if (page) {
+      window.location.href = page;
+    }
+  }
+</script>
+
 </body>
 </html>

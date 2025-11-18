@@ -3,92 +3,84 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gestión de Cultivos</title>
-  <link rel="stylesheet" href="css/cultivo.css" />
-  <link rel="stylesheet" href="css/dashboard.css" />
+  <title>GreeMind Cultivos</title>
+  <link rel="stylesheet" href="/css/dashboard.css" />
+  <link rel="stylesheet" href="/css/cultivo.css"/>
 </head>
 <body>
-  <!-- Sidebar izquierdo -->
-  <div class="sidebar"> 
-    <div class="logo">
-      <img src="img/logo.png" alt="Logo GreenMind" />
-      <h2>GreenMind</h2>
-    </div>
-
-    <ul>
-      <li>
-        <a href="dashboard.html">
-          <img src="img/icons/dashboard.png" alt="" /> Dashboard
-        </a>
-      </li>
-      <li class="active">
-        <a href="cultivo.html">
-          <img src="img/icons/cultivo.png" alt="" /> Cultivo
-        </a>
-      </li>
-      <li>
-        <a href="reporte.html">
-          <img src="img/icons/reporte.png" alt="" /> Reporte
-        </a>
-      </li>
-      <li>
-        <a href="transporte.html">
-          <img src="img/icons/transporte.png" alt="" /> Transporte
-        </a>
-      </li>
-    </ul>
-
-    <div class="sidebar-settings">
-      <a href="ajustes.html">
-        <img src="img/icons/ajustes.png" alt="" /> Ajustes
-      </a>
-    </div>
+  <!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+  <div class="logo-section">
+    <img src="/img/logo.png" class="logo" />
+    <span class="logo-text">GreeMind</span>
   </div>
 
-  <!-- Contenido principal -->
+  <ul class="menu">
+    <li onclick="navigate('dashboard.html')">🏠 <span>Fincas</span></li>
+    <li class="active">🌱 <span>Cultivos</span></li>
+    <li onclick="navigate('report.html')">📊 <span>Reportes</span></li>
+    <li onclick="navigate('clima.html')">☁️ <span>Clima</span></li>
+    <li onclick="navigate('transport.html')">🚜 <span>Transporte</span></li>
+  </ul>
+
+  <ul class="menu bottom">
+    <li onclick="navigate('settings.html')">⚙️ <span>Configuración</span></li>
+    <li onclick="navigate('logout.html')">🔓 <span>Salir</span></li>
+  </ul>
+</div>
+
+
+  <!-- MAIN -->
   <div class="main">
     <div class="topbar">
-      <div class="topbar-icons">
-        <img src="img/icons/user.png" alt="Usuario" />
-        <img src="img/icons/arrow.png" alt="Salir" />
-      </div>
+      <h1>Cultivos</h1>
+      <img class="profile" src="https://cdn-icons-png.flaticon.com/512/6997/6997662.png" />
     </div>
 
-    <h1>Registro de Cultivos</h1>
+    <!-- Formulario de Cultivos -->
+    <div class="form-box">
+      <h2>Registro de Cultivos</h2>
+      <form id="cultivoForm">
+        <label for="nombre">Nombre del cultivo</label>
+        <input type="text" id="nombre" required />
 
-    <!-- Formulario -->
-    <form id="cultivoForm">
-      <label for="nombre">Nombre del cultivo</label>
-      <input type="text" id="nombre" required />
+        <label for="variedad">Variedad</label>
+        <input type="text" id="variedad" required />
 
-      <label for="variedad">Variedad</label>
-      <input type="text" id="variedad" required />
+        <label for="fecha">Fecha de siembra</label>
+        <input type="date" id="fecha" required />
 
-      <label for="fecha">Fecha de siembra</label>
-      <input type="date" id="fecha" required />
+        <label for="quintales">Quintales esperados o cultivados</label>
+        <input type="number" id="quintales" min="0" step="0.01" required />
 
-      <label for="quintales">Quintales esperados o cultivados</label>
-      <input type="number" id="quintales" min="0" step="0.01" required />
+        <button type="submit">Agregar cultivo</button>
+      </form>
+    </div>
 
-      <button type="submit">Agregar cultivo</button>
-    </form>
-
-    <!-- Tabla -->
-    <table>
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Variedad</th>
-          <th>Fecha de siembra</th>
-          <th>Quintales</th>
-          <th>Kilometraje</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody id="cultivosTableBody"></tbody>
-    </table>
+    <!-- Tabla de Cultivos -->
+    <h2>Lista de Cultivos</h2>
+    <div class="table-box">
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Variedad</th>
+            <th>Fecha de siembra</th>
+            <th>Quintales</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="cultivosTableBody"></tbody>
+      </table>
+    </div>
   </div>
 
-  <script src="js/cultivo.js"></script>
+  <script src="/js/cultivo.js"></script>
+  <script>
+    // Navegación rápida entre módulos
+    function navigate(page) {
+      window.location.href = page;
+    }
+  </script>
 </body>
 </html>
