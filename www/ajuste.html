@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GreenMind - Ajustes</title>
+  <link rel="stylesheet" href="css/ajuste.css">
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar" id="sidebar">
+    <div class="logo-section">
+      <img src="img/logo.png" class="logo" />
+      <span class="logo-text">GreenMind</span>
+    </div>
+
+    <ul class="menu">
+      <li onclick="navigate('dashboard.html')">🏠 <span>Fincas</span></li>
+      <li onclick="navigate('cultivo.html')">🌱 <span>Cultivos</span></li>
+      <li onclick="navigate('reporte.html')">📊 <span>Reportes</span></li>
+      <li onclick="navigate('clima.html')">☁️ <span>Clima</span></li>
+      <li onclick="navigate('transporte.html')">🚜 <span>Transporte</span></li>
+    </ul>
+
+    <ul class="menu bottom">
+      <li class="active">⚙️ <span>Ajustes</span></li>
+      <li onclick="navigate('index.html')">🔓 <span>Salir</span></li>
+    </ul>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+    <div class="topbar">
+      <h1>Ajustes</h1>
+      <img class="profile" src="https://cdn-icons-png.flaticon.com/512/6997/6997662.png" />
+    </div>
+
+    <!-- Formulario Ajustes -->
+    <div class="form-box">
+      <h2>Configuración de la cuenta</h2>
+      <form id="ajustesForm">
+        <div>
+          <label for="username">Nombre de usuario</label>
+          <input type="text" id="username" placeholder="Tu nombre" required>
+        </div>
+
+        <div>
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" placeholder="correo@ejemplo.com" required>
+        </div>
+
+        <div>
+          <label for="password">Nueva contraseña</label>
+          <input type="password" id="password" placeholder="********">
+        </div>
+
+        <div>
+          <label for="theme">Tema de la interfaz</label>
+          <select id="theme">
+            <option value="light">Claro</option>
+            <option value="dark">Oscuro</option>
+          </select>
+        </div>
+
+        <button type="submit">Guardar cambios</button>
+      </form>
+    </div>
+
+  </div>
+
+  <script>
+    function navigate(page) {
+      window.location.href = page;
+    }
+  </script>
+</body>
+</html>

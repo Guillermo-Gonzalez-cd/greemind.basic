@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Miapp</string>
+    <string name="title_activity_main">Miapp</string>
+    <string name="package_name">com.miproyecto.Miapp</string>
+    <string name="custom_url_scheme">com.miproyecto.Miapp</string>
+</resources>
